@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Management Login</title>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap'>
+  <link rel="stylesheet" href="../public/css/style.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      background-image: url('https://www.ocpgroup.ma/media/2020-07/OCP_hero_Ethiopia_%201440_compressed.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh; 
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+<div class="screen-1">
+  <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/1/1c/OCP_Group.svg" alt="OCP Group Logo">
+  <div class="email">
+    <label for="email">Email Address</label>
+    <div class="sec-2">
+      <ion-icon name="mail-outline"></ion-icon>
+      <input type="email" id="email" name="email" placeholder="example@ocpgroup.ma" required/>
+    </div>
+  </div>
+  <div class="password">
+    <label for="password">Password</label>
+    <div class="sec-2">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <input class="pas" type="password" id="password" name="password" placeholder="············" required/>
+      <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+    </div>
+  </div>
+  <button class="login" onclick="simulateLogin()">Login</button>
+  <div class="footer"><span>Signup</span><span>Forgot Password?</span></div>
+</div>
+
+<script>
+  document.querySelector('.show-hide').addEventListener('click', function () {
+    const passwordInput = document.querySelector('.pas');
+    const eyeIcon = this;
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      eyeIcon.name = 'eye-off-outline';
+    } else {
+      passwordInput.type = 'password';
+      eyeIcon.name = 'eye-outline';
+    }
+  });
+
+  function simulateLogin() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    const validUsers = [
+      { email: 'sanaa.el.mansouri@ocpgroup.ma', password: 'sanaa.el.mansouri123' },
+      { email: 'adil.moussaoui@ocpgroup.ma', password: 'adil.moussaouid123' },
+      { email: 'nora.el.khattabi@ocpgroup.ma', password: 'nora.el.khattabi123' }
+    ];
+
+    const user = validUsers.find(user => user.email === email && user.password === password);
+
+    if (user) {
+      alert('Login successful! Redirecting to Employee List...');
+      window.location.href = 'employeelist.php'; 
+    } else {
+      alert('Invalid email or password');
+    }
+  }
+</script>
+
+</body>
+</html>
